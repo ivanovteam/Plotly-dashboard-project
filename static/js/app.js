@@ -78,7 +78,7 @@ function metaData(sample) {
     panelBody.append("h5").text(`${key}: ${value}`);
   });
   // gauge
-  var gauge = 
+  
 });
 }
 
