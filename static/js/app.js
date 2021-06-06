@@ -1,6 +1,5 @@
 
 //  Use D3 fetch to read the JSON file
-// The data from the JSON file is arbitrarily named importedData as the argument
 
 function plots(id) {
   d3.json("samples.json").then((data) => {
@@ -73,45 +72,30 @@ function metaData(sample) {
   var panelBody = d3.select(".panel-body");
   panelBody.html("");
 
-  // Use `Object.entries` to add each key and value pair to the panelData
+  // Use `Object.entries` to add each key and value pair to the panelBody
   Object.entries(result).forEach(([key, value]) => {
     panelBody.append("h5").text(`${key}: ${value}`);
   });
-  // gauge
+ 
   
 });
 }
-
+// create a function to change the data every time
 function optionChanged(sample) {
   metaData(sample);
   plots(sample);
 };
 
-
-
-
-// function optionChanged() {
-//   d3.json("samples.json").then((data)=> {
-
-//     // Use D3 to select the dropdown menu
-//     var dropdownMenu = d3.select("#selDataset");
-//     // Assign the value of the dropdown menu option to a variable
-//     var dataset = dropdownMenu.property("value");
-
-//   metaData();
-//   plots();
-//   });
-
-
+// create an init function to select and read an id from the dropdown
 function init() {
-  // select dropdown menu 
+
   var dropdown = d3.select("#selDataset");
 
   // read the data 
   d3.json("samples.json").then((data)=> {
       console.log(data)
 
-      // get the id data to the dropdwown menu
+      // connect the id with the dropdwown menu
       data.names.forEach(function(name) {
           dropdown.append("option").text(name).property("value");
 
@@ -123,4 +107,5 @@ function init() {
     });
 
   }
-      init();
+// calling the init funtction      
+init();
