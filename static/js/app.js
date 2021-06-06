@@ -1,5 +1,5 @@
 
-//  Use D3 fetch to read the JSON file
+//  Use D3 to read the JSON file
 
 function plots(id) {
   d3.json("samples.json").then((data) => {
@@ -41,7 +41,8 @@ function plots(id) {
   // Render the plot to the div tag with id "plot"
   Plotly.newPlot("bar", chartData, layout);
 
-  var bubbleData = [{
+ // create the buble chart
+    var bubbleData = [{
 
     x: OTU_id, 
     y: sample_values,
@@ -60,6 +61,7 @@ function plots(id) {
 }
 
 //Build function to read metadata
+
 function metaData(sample) {
   d3.json("samples.json").then((data) => {
     var metadata = data.metadata;
@@ -107,5 +109,5 @@ function init() {
     });
 
   }
-// calling the init funtction      
+// call the init funtction      
 init();
